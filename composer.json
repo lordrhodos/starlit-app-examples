@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "starlit/app": "dev-master",
+        "starlit/app": "dev-resolve-controller-via-container",
         "vlucas/phpdotenv": "^2.2"
     },
     "require-dev": {
