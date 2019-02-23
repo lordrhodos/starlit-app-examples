@@ -1,0 +1,26 @@
+{
+    "name": "lordrhodos/starlit-app-examples",
+    "description": "Example implementations for new starlit-app features",
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "starlit/app": "^0.5",
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Starlit\\App\\Examples\\": "app/src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patrick Rodacker",
+            "email": "patrick@rodacker.de"
+        }
+    ]
+}

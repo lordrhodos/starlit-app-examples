@@ -1,0 +1,54 @@
+
+# ------------------------------------------------------------------------------
+# | General Apache settings                                                    |
+# ------------------------------------------------------------------------------
+
+# Override potentially insecure server settings (eg. Indexes)
+Options SymLinksIfOwnerMatch
+
+# Overrides Apache behavior to add a slash to the end of for example /admin/
+DirectorySlash Off
+
+RewriteEngine On
+
+
+# Force no caching for dynamic files
+<FilesMatch "\.php$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+        Header set Pragma "no-cache"
+    </IfModule>
+</FilesMatch>
+
+# Since Apache strips aways the Authorization header that we need for OAuth 2.0 we need to put that in Env instead
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Redirect all other non file request to application router
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !\.(js|css|png|jpg|gif|ico|txt)$
+RewriteRule . index.php [QSA,L]
+
+
+# ------------------------------------------------------------------------------
+# | PHP Settings                                                               |
+# ------------------------------------------------------------------------------
+
+# Prevent any error being displayed in production environment
+php_flag    display_errors          off
+php_flag    display_startup_errors  off
+
+# Nice defaults to have forced (in case server sets any other)
+php_value   error_reporting         -1
+php_flag    output_buffering        off
+
+
+# ------------------------------------------------------------------------------
+# | Security headers                                                              |
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Content-Security-Policy "default-src 'none'; frame-ancestors 'none'"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "no-referrer"
+</IfModule>

@@ -1,0 +1,21 @@
+version: '3'
+networks:
+    starweb:
+        external: true
+services:
+    starlit-app:
+        build: .
+        image: starlit-app
+        container_name: starlit-app
+        ports:
+        - 8099:80
+        volumes:
+        - .:/var/www/app
+        environment:
+            APP_ENV: 'development'
+            PHP_IDE_CONFIG: 'serverName=localhost'
+            XDEBUG_CONFIG: remote_host=10.254.254.254
+        networks:
+            starlit:
+                aliases:
+                - starlit-app.local

@@ -1,0 +1,7 @@
+resources
+!resources/docker
+tests
+var
+.env.dist
+phpunit.xml
+README.md
