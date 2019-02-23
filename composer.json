@@ -4,8 +4,14 @@
     "type": "project",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/lordrhodos/starlit-app"
+        }
+    ],
     "require": {
-        "starlit/app": "^0.5",
+        "starlit/app": "dev-resolve-controller-actions-via-container",
         "vlucas/phpdotenv": "^2.2"
     },
     "require-dev": {
