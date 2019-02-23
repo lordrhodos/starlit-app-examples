@@ -247,7 +247,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lordrhodos/starlit-app",
-                "reference": "e9276995cf69973aeca5cf399ad0bf6bb86107fd"
+                "reference": "e99f13317487559a68353aefeeabf75a4b9a36e8"
             },
             "require": {
                 "filp/whoops": "^2.0",
@@ -289,7 +289,7 @@
                 "framework",
                 "mvc"
             ],
-            "time": "2019-02-23T11:59:08+00:00"
+            "time": "2019-02-23T18:42:06+00:00"
         },
         {
             "name": "starlit/utils",
